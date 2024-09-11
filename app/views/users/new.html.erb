@@ -1,0 +1,33 @@
+<h1>registration</h1>
+
+<%= form_with model: @user, url:  registration_user_url do |form| %>
+<div>
+<%= form.label :email %>
+<%= form.email_field :email %>
+</div>
+<div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+</div>
+<div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+</div>
+<div>
+    <%= form.submit %>
+</div>
+<%end%>
+<div>
+<% unless @user.valid? %>
+<h4>Error in registration</h4>
+<ul>
+<% @user.errors.full_messages.each do |error| %>
+<li>
+<p>
+    <strong><%= error %></strong>
+</p>
+</li>
+<%end%>
+</ul>
+<%end%>
+</div>
