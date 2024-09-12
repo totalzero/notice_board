@@ -1,0 +1,14 @@
+<h1>Login</h1>
+<% if flash[:alert] %>
+<h4><%= flash[:alert]%></h4>
+<%end%>
+<div>
+    <%= form_with url: login_user_url do |form| %>
+<%= form.label :email %>
+<%= form.email_field :email %>
+
+<%= form.label :password %>
+<%= form.password_field :password %>
+<%= form.submit 'login' %>
+    <%end%>
+</div>
