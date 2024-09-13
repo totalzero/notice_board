@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 include UsersHelper
+before_action :required_login, only: [:dashboard]
 
 def new
 @user = User.new
@@ -30,6 +31,11 @@ render :login_form, status: :unprocessable_entity
   end
 end
 
+def logout
+logout_user
+redirect_to root_path
+end
+
 def dashboard
 @user = User.find(params[:id])
 end
@@ -39,4 +45,10 @@ def user_params
 params.require(:user).permit([:email, :password, :password_confirmation])
 end
 
+def required_login
+unless user_logged?
+  flash.now[:alert] = "you must login"
+    redirect_to root_path
+end
+end
 end

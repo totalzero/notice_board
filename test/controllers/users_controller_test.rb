@@ -45,4 +45,11 @@ assert_redirected_to dashboard_path(user)
 end
 end
 end
+
+test "should get login page if get dashboard with not logged user" do
+  get dashboard_url(User.first)
+  assert_response :redirect
+  assert_redirected_to root_path
+    assert flash[:alert], "you must login"
+end
 end
