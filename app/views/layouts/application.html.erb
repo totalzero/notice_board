@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <%if user_logged? %>
+<li><%= button_to 'logout', logout_user_path, method: :delete %></li>
+<%else%>
+<li><%= link_to 'login', login_user_path %></li>
+        <%end%>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

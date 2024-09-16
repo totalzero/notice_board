@@ -32,7 +32,7 @@ render :login_form, status: :unprocessable_entity
 end
 
 def logout
-logout_user
+user_logout
 redirect_to root_path
 end
 
@@ -45,10 +45,4 @@ def user_params
 params.require(:user).permit([:email, :password, :password_confirmation])
 end
 
-def required_login
-unless user_logged?
-  flash.now[:alert] = "you must login"
-    redirect_to root_path
-end
-end
 end

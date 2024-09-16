@@ -1,3 +1,16 @@
 <h1>Dashboard</h1>
 
 <h2>Your Notices</h2>
+
+<div id="notices">
+    <% @user.notices.each do |notice| %>
+      <%= render notice %>
+      <p>
+        <%= link_to "Show this notice", notice %>
+      </p>
+    <% end %>
+  <%= link_to 'new notice', new_notice_path %>  
+  </div>
+  
+  
+  

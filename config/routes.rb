@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notices
 root 'users#login_form'
 get '/registration', to: "users#new"
 post '/registration', to: "users#create", as: "registration_user"
