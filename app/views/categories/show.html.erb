@@ -1,0 +1,11 @@
+<h1><%= @category.name %></h1>
+<p>
+    <%= @category.description %>
+</p>
+<h2>Notices</h2>
+<% @category.notices.each do |notice| %>
+<div>
+<h3><%= notice.title %></h3>
+<%= link_to 'read more', notice %>
+</div>
+<%end%>
