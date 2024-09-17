@@ -4,7 +4,11 @@ module UsersHelper
   end
 
   def current_user
-    User.find(session[:current_user])
+    if user_logged?
+      User.find(session[:current_user])
+    else
+      nil
+    end
 end
 
 def user_logged?

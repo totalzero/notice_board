@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root 'notices#index'
   resources :notices
-root 'users#login_form'
 get '/registration', to: "users#new"
 post '/registration', to: "users#create", as: "registration_user"
 get '/login', to: "users#login_form", as: "login"

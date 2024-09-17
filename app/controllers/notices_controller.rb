@@ -1,7 +1,9 @@
 class NoticesController < ApplicationController
-  before_action :set_notice, only: %i[ show edit update destroy ]
+include UsersHelper
+include NoticesHelper
+  before_action :set_notice, :set_categories, only: %i[ show edit update destroy ]
 before_action :required_login, only: %i[new create edit update destroy]
-
+before_action :require_owner, only: %i[edit update destroy]
   # GET /notices or /notices.json
   def index
     @notices = Notice.all
@@ -14,11 +16,6 @@ before_action :required_login, only: %i[new create edit update destroy]
   # GET /notices/new
   def new
     @notice = current_user.notices.build
-    @categories = []
-Category.all.each do |cat|
-  @categories.push([cat.name, cat.id])
-end
-
   end
 
   # GET /notices/1/edit
@@ -72,5 +69,17 @@ end
     # Only allow a list of trusted parameters through.
     def notice_params
       params.require(:notice).permit(:title, :body, :category_id)
+    end
+
+    def require_owner
+      unless notice_owner?(current_user, @notice)
+        redirect_to root_path
+      end
+    end
+    def set_categories
+      @categories = []
+      Category.all.each do |cat|
+        @categories.push([cat.name, cat.id])
+      end
     end
 end
