@@ -1,10 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-  #title: MyText
-  #body: MyText
-  #user: one
-  #category: one
+one:
+  title: "example notice"
+  #body: "this is a example text for notice"
+  user: one
+  category: one
 
 #two:
   #title: MyText

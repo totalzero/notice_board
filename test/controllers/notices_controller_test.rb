@@ -17,7 +17,7 @@ class NoticesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create notice" do
     assert_difference("Notice.count") do
-      post notices_url, params: { notice: {  } }
+      post notices_url, params: { notice: {title: "some notice title", body: "this is a example notice content of test"  } }
     end
 
     assert_redirected_to notice_url(Notice.last)
@@ -34,7 +34,7 @@ class NoticesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update notice" do
-    patch notice_url(@notice), params: { notice: {  } }
+    patch notice_url(@notice), params: { notice: { title: "updatet notice", body: "this is a content of updatet notice" } }
     assert_redirected_to notice_url(@notice)
   end
 
