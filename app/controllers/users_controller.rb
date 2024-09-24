@@ -40,6 +40,20 @@ def dashboard
 @user = User.find(params[:id])
 end
 
+def destroy
+  @user = User.find(params[:id])
+  @user.destroy
+end
+
+def dashboard_admin
+unless  current_user.admin?
+  redirect_to root_path
+else
+  @users = User.all
+  @categories = Category.all
+end
+end
+
 private
 def user_params
 params.require(:user).permit([:email, :password, :password_confirmation])

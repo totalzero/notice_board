@@ -1,0 +1,25 @@
+<h1>Admin</h1>
+
+
+<%= link_to 'new category', new_category_path %>
+<h4>Users</h4>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+<tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td>
+        <%= link_to "delete user", destroy_user_path(user), data: {turbo_method: :delete, turbo_confirmation: "are you sure delete this user?"}%>
+    </td>
+</tr>
+        <%end%>
+    </tbody>
+</table>

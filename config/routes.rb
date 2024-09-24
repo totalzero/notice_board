@@ -7,6 +7,8 @@ get '/login', to: "users#login_form", as: "login"
 post '/login', to: "users#login", as: "login_user"
 get '/dashboard/:id', to: "users#dashboard", as: "dashboard"
 delete '/logout', to: "users#logout", as: "logout_user"
+delete '/users/:id', to: "users#destroy", as: "destroy_user"
+get '/dashboard-admin', to: 'users#dashboard_admin', as: "dashboard_admin"
 resources :categories
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
